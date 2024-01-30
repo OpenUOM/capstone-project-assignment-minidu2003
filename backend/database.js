@@ -1,99 +1,5 @@
-const dbConnection = require("./sqlite");
-
-dbConnection
-  .getDbConnection()
-  .then((db) => {
-    init(db);
-  })
-  .catch((err) => {
-    console.log(err);
-    throw err;
-  });
-
-let _db;
-
-function init(db) {
-    _db = db;
-}
-
-const knex_db = require("./db-config");
-
-const dbinitialize = async () => {
-    testBase.resetDatabase(knex_db);
-}
-
-const readTeachers = async () => {
-    const sql = `SELECT * FROM dummyData`
-    return new Promise((resolve, reject) => {
-        knex_db
-            .raw(sql)
-            .then((data) => {
-                resolve(data);
-            })
-            .catch((error) => {
-                reject(error);
-            });
-    });
-}
-
-const readTeacherInfo = async (id) => {
-    const sql = `SELECT * FROM dummyData`
-    return new Promise((resolve, reject) => {
-        knex_db
-            .raw(sql)
-            .then((data) => {
-                resolve(data);
-            })
-            .catch((error) => {
-                reject(error);
-            });
-    });
-}
-
-const addTeacher = async (id, name, age) => {
-    const sql = `SELECT * FROM dummyData`
-    return new Promise((resolve, reject) => {
-        knex_db
-            .raw(sql)
-            .then((data) => {
-                resolve(data);
-            })
-            .catch((error) => {
-                reject(error);
-            });
-    });
-}
-
-const updateTeacher = async (name, age, id) => {
-    const sql = `SELECT * FROM dummyData`
-    return new Promise((resolve, reject) => {
-        knex_db
-            .raw(sql)
-            .then((data) => {
-                resolve(data);
-            })
-            .catch((error) => {
-                reject(error);
-            });
-    });
-}
-
-const deleteTeacher = async (id) => {
-    const sql = `SELECT * FROM dummyData`
-    return new Promise((resolve, reject) => {
-        knex_db
-            .raw(sql)
-            .then((data) => {
-                resolve(data);
-            })
-            .catch((error) => {
-                reject(error);
-            });
-    });
-}
-
 const readStudents = async () => {
-    const sql = `SELECT * FROM dummyData`
+    const sql = `SELECT * FROM studentTable`;
     return new Promise((resolve, reject) => {
         knex_db
             .raw(sql)
@@ -107,7 +13,7 @@ const readStudents = async () => {
 }
 
 const readStudentInfo = async (id) => {
-    const sql = `SELECT * FROM dummyData`
+    const sql = `SELECT * FROM studentTable WHERE id = ${id}`;
     return new Promise((resolve, reject) => {
         knex_db
             .raw(sql)
@@ -121,7 +27,7 @@ const readStudentInfo = async (id) => {
 }
 
 const addStudent = async (id, name, age, religion) => {
-    const sql = `SELECT * FROM dummyData`
+    const sql = `INSERT INTO studentTable (id, name, age, religion) VALUES (${id}, '${name}', ${age}, '${religion}')`;
     return new Promise((resolve, reject) => {
         knex_db
             .raw(sql)
@@ -135,7 +41,7 @@ const addStudent = async (id, name, age, religion) => {
 }
 
 const updateStudent = async (name, age, religion, id) => {
-    const sql = `SELECT * FROM dummyData`
+    const sql = `UPDATE studentTable SET name='${name}', age=${age}, religion='${religion}' WHERE id=${id}`;
     return new Promise((resolve, reject) => {
         knex_db
             .raw(sql)
@@ -149,7 +55,7 @@ const updateStudent = async (name, age, religion, id) => {
 } 
 
 const deleteStudent = async (id) => {
-    const sql = `SELECT * FROM dummyData`
+    const sql = `DELETE FROM studentTable WHERE id=${id}`;
     return new Promise((resolve, reject) => {
         knex_db
             .raw(sql)
@@ -162,6 +68,16 @@ const deleteStudent = async (id) => {
     });
 }
 
+const searchTeacherByName = async (searchText) => {
+    // Implement search logic for teachers by name
+    // Update the teacherData array for the teacher class
+}
+
+const searchStudentByName = async (searchText) => {
+    // Implement search logic for students by name
+    // Update the studentData array for the student class
+}
+
 module.exports = {
     readTeachers,
     readStudents,
@@ -172,5 +88,7 @@ module.exports = {
     readStudentInfo,
     readTeacherInfo,
     updateStudent,
-    updateTeacher
+    updateTeacher,
+    searchTeacherByName,
+    searchStudentByName,
 };
