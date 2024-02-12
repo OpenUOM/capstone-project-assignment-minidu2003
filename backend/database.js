@@ -37,10 +37,10 @@ const readTeachers = async () => {
 }
 
 const readTeacherInfo = async (id) => {
-    const sql = `SELECT * FROM dummyData WHERE id = ?`
+    const sql = `SELECT * FROM dummyData`
     return new Promise((resolve, reject) => {
         knex_db
-            .raw(sql, [id])
+            .raw(sql)
             .then((data) => {
                 resolve(data);
             })
@@ -51,10 +51,10 @@ const readTeacherInfo = async (id) => {
 }
 
 const addTeacher = async (id, name, age) => {
-    const sql = `INSERT INTO dummyData (id, name, age) VALUES (?, ?, ?)`
+    const sql = `SELECT * FROM dummyData`
     return new Promise((resolve, reject) => {
         knex_db
-            .raw(sql, [id, name, age])
+            .raw(sql)
             .then((data) => {
                 resolve(data);
             })
@@ -65,10 +65,10 @@ const addTeacher = async (id, name, age) => {
 }
 
 const updateTeacher = async (name, age, id) => {
-    const sql = `UPDATE dummyData SET name = ?, age = ? WHERE id = ?`
+    const sql = `SELECT * FROM dummyData`
     return new Promise((resolve, reject) => {
         knex_db
-            .raw(sql, [name, age, id])
+            .raw(sql)
             .then((data) => {
                 resolve(data);
             })
@@ -79,10 +79,10 @@ const updateTeacher = async (name, age, id) => {
 }
 
 const deleteTeacher = async (id) => {
-    const sql = `DELETE FROM dummyData WHERE id = ?`
+    const sql = `SELECT * FROM dummyData`
     return new Promise((resolve, reject) => {
         knex_db
-            .raw(sql, [id])
+            .raw(sql)
             .then((data) => {
                 resolve(data);
             })
@@ -107,10 +107,10 @@ const readStudents = async () => {
 }
 
 const readStudentInfo = async (id) => {
-    const sql = `SELECT * FROM dummyData WHERE id = ?`
+    const sql = `SELECT * FROM dummyData`
     return new Promise((resolve, reject) => {
         knex_db
-            .raw(sql, [id])
+            .raw(sql)
             .then((data) => {
                 resolve(data);
             })
@@ -121,10 +121,10 @@ const readStudentInfo = async (id) => {
 }
 
 const addStudent = async (id, name, age, religion) => {
-    const sql = `INSERT INTO dummyData (id, name, age, religion) VALUES (?, ?, ?, ?)`
+    const sql = `SELECT * FROM dummyData`
     return new Promise((resolve, reject) => {
         knex_db
-            .raw(sql, [id, name, age, religion])
+            .raw(sql)
             .then((data) => {
                 resolve(data);
             })
@@ -135,10 +135,10 @@ const addStudent = async (id, name, age, religion) => {
 }
 
 const updateStudent = async (name, age, religion, id) => {
-    const sql = `UPDATE dummyData SET name = ?, age = ?, religion = ? WHERE id = ?`
+    const sql = `SELECT * FROM dummyData`
     return new Promise((resolve, reject) => {
         knex_db
-            .raw(sql, [name, age, religion, id])
+            .raw(sql)
             .then((data) => {
                 resolve(data);
             })
@@ -149,10 +149,10 @@ const updateStudent = async (name, age, religion, id) => {
 } 
 
 const deleteStudent = async (id) => {
-    const sql = `DELETE FROM dummyData WHERE id = ?`
+    const sql = `SELECT * FROM dummyData`
     return new Promise((resolve, reject) => {
         knex_db
-            .raw(sql, [id])
+            .raw(sql)
             .then((data) => {
                 resolve(data);
             })
