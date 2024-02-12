@@ -93,7 +93,7 @@ const deleteTeacher = async (id) => {
 }
 
 const readStudents = async () => {
-    const sql = `SELECT * FROM dummyData`
+    const sql = `SELECT * FROM students`; // Assuming the table name is 'students'
     return new Promise((resolve, reject) => {
         knex_db
             .raw(sql)
@@ -107,10 +107,10 @@ const readStudents = async () => {
 }
 
 const readStudentInfo = async (id) => {
-    const sql = `SELECT * FROM dummyData`
+    const sql = `SELECT * FROM students WHERE id = ?`; // Assuming 'id' is the primary key
     return new Promise((resolve, reject) => {
         knex_db
-            .raw(sql)
+            .raw(sql, [id])
             .then((data) => {
                 resolve(data);
             })
@@ -121,10 +121,10 @@ const readStudentInfo = async (id) => {
 }
 
 const addStudent = async (id, name, age, religion) => {
-    const sql = `SELECT * FROM dummyData`
+    const sql = `INSERT INTO students (id, name, age, religion) VALUES (?, ?, ?, ?)`; // Assuming 'id', 'name', 'age', 'religion' are column names
     return new Promise((resolve, reject) => {
         knex_db
-            .raw(sql)
+            .raw(sql, [id, name, age, religion])
             .then((data) => {
                 resolve(data);
             })
@@ -135,10 +135,10 @@ const addStudent = async (id, name, age, religion) => {
 }
 
 const updateStudent = async (name, age, religion, id) => {
-    const sql = `SELECT * FROM dummyData`
+    const sql = `UPDATE students SET name = ?, age = ?, religion = ? WHERE id = ?`; // Assuming 'id' is the primary key
     return new Promise((resolve, reject) => {
         knex_db
-            .raw(sql)
+            .raw(sql, [name, age, religion, id])
             .then((data) => {
                 resolve(data);
             })
@@ -149,10 +149,10 @@ const updateStudent = async (name, age, religion, id) => {
 } 
 
 const deleteStudent = async (id) => {
-    const sql = `SELECT * FROM dummyData`
+    const sql = `DELETE FROM students WHERE id = ?`; // Assuming 'id' is the primary key
     return new Promise((resolve, reject) => {
         knex_db
-            .raw(sql)
+            .raw(sql, [id])
             .then((data) => {
                 resolve(data);
             })
@@ -161,6 +161,7 @@ const deleteStudent = async (id) => {
             });
     });
 }
+
 
 module.exports = {
     readTeachers,
