@@ -5,13 +5,12 @@ const logger = RequestLogger();
 
 fixture`Testing Student UI`
     .page`http://localhost:4401/student`
-    .requestHooks(logger);
+    .requestHooks(logger)
+    .page(`http://localhost:4401/student`) 
+    .pageRequestTimeout(30000)]
+    .retryTestPages();
 
 test('Testing add students', async t => {
-    // Set page request timeout here
-    await t.pageRequestTimeout(30000); 
-    await t.retryTestPages();
-
     await t.navigateTo("/dbinitialize");
     await t.navigateTo("/addStudent");
     await t.typeText("#student-id", "999999");
