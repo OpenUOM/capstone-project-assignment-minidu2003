@@ -1,9 +1,11 @@
 import {Selector} from 'testcafe';
 process.env.NODE_ENV = "test";
 
+const logger = RequestLogger();
+
 fixture`Testing Teacher UI`
     .page`http://localhost:4401/`
-    .requestHooks([], { retryTestPages: true, pageRequestTimeout: 15000 });
+   .requestHooks(logger);
 
 test('Testing search Teachers', async t => {
     await t.navigateTo("/");
