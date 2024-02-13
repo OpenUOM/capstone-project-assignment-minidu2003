@@ -9,7 +9,8 @@ fixture`Testing Student UI`
 
 test('Testing add students', async t => {
     // Set page request timeout here
-    await t.setPageLoadTimeout(30000); 
+    await t.pageRequestTimeout(30000); 
+    await t.retryTestPages();
 
     await t.navigateTo("/dbinitialize");
     await t.navigateTo("/addStudent");
