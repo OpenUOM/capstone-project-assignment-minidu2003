@@ -3,6 +3,7 @@ process.env.NODE_ENV = "test";
 
 fixture`Testing Teacher UI`
     .page`http://localhost:4401/`
+    .requestHooks([], { retryTestPages: true, pageRequestTimeout: 15000 });
 
 test('Testing search Teachers', async t => {
     await t.navigateTo("/");
