@@ -11,8 +11,7 @@ const logger = RequestLogger(
 
 fixture`Testing Student UI`
     .page(url)
-    .requestHooks(logger)
-    .retryTestPages();
+    .requestHooks(logger);
 
 test('Testing add students', async t => {
     await t.navigateTo("/dbinitialize");
