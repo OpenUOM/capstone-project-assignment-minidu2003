@@ -1,4 +1,4 @@
-import {Selector} from 'testcafe';
+import {Selector, RequestLogger} from 'testcafe';
 process.env.NODE_ENV = "test";
 
 const logger = RequestLogger();
