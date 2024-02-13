@@ -1,11 +1,12 @@
 import { Selector, RequestLogger  } from 'testcafe';
 process.env.NODE_ENV = "test";
 
-const logger = RequestLogger();
+// const logger = RequestLogger();
 
 fixture`Testing Student UI`
     .page`http://localhost:4401/student`
-    .requestHooks(logger);
+    // .requestHooks(logger);
+    .requestHooks(RequestLogger); 
 
 test('Testing add students', async t => {
 
