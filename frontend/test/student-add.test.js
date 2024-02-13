@@ -1,13 +1,17 @@
 import { Selector, RequestLogger } from 'testcafe';
 
-// Create a request logger instance
-const logger = RequestLogger();
+const url = 'http://localhost:4401/student';
+const logger = RequestLogger(
+    {url, method: 'post'},
+    {
+    logResponseHeaders: true,
+    logResponseBody:    true
+    }
+);
 
 fixture`Testing Student UI`
-    .page`http://localhost:4401/student`
+    .page(url)
     .requestHooks(logger)
-    .page(`http://localhost:4401/student`) 
-    .pageRequestTimeout(30000)
     .retryTestPages();
 
 test('Testing add students', async t => {
