@@ -7,7 +7,7 @@ fixture`Testing Student UI`
     .page`http://localhost:4401/student`
     .requestHooks(logger)
     .page(`http://localhost:4401/student`) 
-    .pageRequestTimeout(30000)]
+    .pageRequestTimeout(30000)
     .retryTestPages();
 
 test('Testing add students', async t => {
